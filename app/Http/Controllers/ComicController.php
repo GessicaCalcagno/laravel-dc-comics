@@ -38,7 +38,9 @@ class ComicController extends Controller
      */
     public function show(string $id)
     {
-        //
+       //se trova il parametro bene se no ci restituisce errore 404
+        $comic = Comic::findOrFail($id);
+        return view('comics.show',compact('comic'));
     }
 
     /**

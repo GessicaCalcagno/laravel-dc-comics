@@ -20,4 +20,6 @@ Route::get('/', function () {
 
 // Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
 
-Route::resource('comics',ComicController::class);
+Route::resource('/comics',ComicController::class);
+//                                                                   nome della rotta
+Route::get('/comics/{comics}',[ComicController::class,'show'])->name('comic.show');
