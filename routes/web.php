@@ -21,5 +21,6 @@ Route::get('/', function () {
 // Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
 
 Route::resource('/comics',ComicController::class);
-//                                                                   nome della rotta
-Route::get('/comics/{comics}',[ComicController::class,'show'])->name('comic.show');
+//Non c'è bisogno di farlo ma nel caso non avessi aggiunto il metoto sopra avrei dovuto scrivere così       
+//                                              nome della rotta
+//Route::get('/comics/{comics}',[ComicController::class,'show'])->name('comic.show');
