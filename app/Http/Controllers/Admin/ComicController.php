@@ -28,10 +28,20 @@ class ComicController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * prende le info dal form e li salva
      */
     public function store(Request $request)
     {
-        //
+        //prelevo tutti i dati dal request e ottengo array associativo
+        $data = $request->all();
+        $comic = new Comic();
+        //Solo se nel model c'è fillable
+        $comic->fill($data);
+        //Salvo nel database
+        $comic->save();
+        //dd($comic);
+        //per non mostrare una pagina vuota reidirizziamo l'utente alla pagina comics.show quindi la pagina dei dettagli ma lo vedremo anche nella lista dei fumetti nell'index
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
 
     /**

@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <h1>Fumetti</h1>
+    <div class="d-flex justify-content-end pb-5">
+      <a class="btn btn-outline-success" href="{{ route('comics.create')}}">
+        Aggiungi un Fumetto
+      </a>
+    </div>
 
     <table class="table">
         <thead class="striped">
