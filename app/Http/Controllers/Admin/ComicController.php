@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view('comics.create');
     }
 
     /**
@@ -35,12 +36,13 @@ class ComicController extends Controller
 
     /**
      * Display the specified resource.
+     * se noi passiamo nei parametri l'oggetto non c'è bisogno di fare findOrFail
      */
-    public function show(string $id)
+    public function show(Comic $comic)
     {
-       //se trova il parametro bene se no ci restituisce errore 404
-        $comic = Comic::findOrFail($id);
-        return view('comics.show',compact('comic'));
+        //se trova il parametro bene se no ci restituisce errore 404
+        //$comic = Comic::findOrFail($id);
+        return view('comics.show', compact('comic'));
     }
 
     /**

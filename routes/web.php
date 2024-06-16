@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ComicController;
+use App\Http\Controllers\Admin\ComicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-
+//             URL per convenzione sempre al plurale
 // Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
-
-Route::resource('/comics',ComicController::class);
+//php artisan route:list
+Route::resource('/comics', ComicController::class);
 //Non c'è bisogno di farlo ma nel caso non avessi aggiunto il metoto sopra avrei dovuto scrivere così       
 //                                              nome della rotta
 //Route::get('/comics/{comics}',[ComicController::class,'show'])->name('comic.show');
