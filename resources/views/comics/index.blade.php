@@ -30,14 +30,14 @@
                         <td>{{ $comic->sale_date }}</td>
                         <td>{{ $comic->type }}</td>
                         <td >
-                            <div class="d-flex justify-content-around">
+                            <div class="d-flex">
                                 <a class="btn btn-success me-1" href="{{ route('comics.show', ['comic' => $comic->id]) }}">Info</a>
                                 <a class="btn btn-warning me-1" href= "{{ route('comics.edit', ['comic' => $comic->id]) }}">Modifica</a>
     
                                 <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
-                                  <button class="btn btn-danger me-1 delete-button">Cancella</button>
+                                  <button class="btn btn-danger me-1 delete-button" onclick="return confirm('Sei sicuro di voler cancellare questo fumetto?')">Cancella</button>
                                 </form>
                             </div>
                         </td>
@@ -47,6 +47,6 @@
         </table>
     </div>
 
-    <!-- Includi lo script app.js -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <!-- Includo lo script app.js se implementi con Java Script -->
+    <script src="{{ asset('js/app.js') }}"></script> --}}
 @endsection
