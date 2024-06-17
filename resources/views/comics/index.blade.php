@@ -29,21 +29,24 @@
                         <td>{{ $comic->series }}</td>
                         <td>{{ $comic->sale_date }}</td>
                         <td>{{ $comic->type }}</td>
-                        <td>
-                            <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $comic->id]) }}">Info</a>
-                            <a class="btn btn-warning" href= "{{ route('comics.edit', ['comic' => $comic->id]) }}">Modifica</a>
-
-                            <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST">
-                              @csrf
-                              @method('DELETE')
-                              <button class="btn btn-danger">Cancella</button>
-
-                            </form>
+                        <td >
+                            <div class="d-flex justify-content-around">
+                                <a class="btn btn-success me-1" href="{{ route('comics.show', ['comic' => $comic->id]) }}">Info</a>
+                                <a class="btn btn-warning me-1" href= "{{ route('comics.edit', ['comic' => $comic->id]) }}">Modifica</a>
+    
+                                <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button class="btn btn-danger me-1 delete-button">Cancella</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-
     </div>
+
+    <!-- Includi lo script app.js -->
+    <script src="{{ asset('js/app.js') }}"></script>
 @endsection
