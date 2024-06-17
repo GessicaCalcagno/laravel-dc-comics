@@ -20,7 +20,9 @@ Route::get('/', function () {
 //             URL per convenzione sempre al plurale
 // Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
 //php artisan route:list
+// anche senza / comics qui è il nome della rotta e quindi è l'url
+// ed il paramentro comic si crea sempre al singolare
 Route::resource('/comics', ComicController::class);
 //Non c'è bisogno di farlo ma nel caso non avessi aggiunto il metoto sopra avrei dovuto scrivere così       
-//                                              nome della rotta
+//            è il parametro,           nome della rotta
 //Route::get('/comics/{comics}',[ComicController::class,'show'])->name('comic.show');

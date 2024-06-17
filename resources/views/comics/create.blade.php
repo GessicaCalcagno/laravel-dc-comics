@@ -7,7 +7,7 @@
         </div>
 
         <form action="{{ route('comics.store') }}" method="POST">
-            {{-- Per motivi di sicurezza. Cookie per far riconoscere il form al server, senza questo non funziona --}}
+            {{-- Per motivi di sicurezza. Cookie per far riconoscere il form al server, senza questo non funziona, è un Token: un cookie, un input nascosto (lato server) che non possiamo manipolare dalla console, ed ha una chiave creata randomica. Corrispodenza biunivoca--}}
             @csrf
             <div class="mb-3">
                 {{-- il name deve corrispondere al nome della colonna --}}

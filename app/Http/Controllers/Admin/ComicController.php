@@ -34,13 +34,17 @@ class ComicController extends Controller
     {
         //prelevo tutti i dati dal request e ottengo array associativo
         $data = $request->all();
-        $comic = new Comic();
+        // $comic = new Comic();
         //Solo se nel model c'è fillable
-        $comic->fill($data);
+        // $comic->fill($data);
         //Salvo nel database
-        $comic->save();
+        // $comic->save();
+        //dd($data);
         //dd($comic);
+        //con create tolgo: new Comic(), fill() e save().
+        $comic = Comic::create($data);
         //per non mostrare una pagina vuota reidirizziamo l'utente alla pagina comics.show quindi la pagina dei dettagli ma lo vedremo anche nella lista dei fumetti nell'index
+        //possiamo reindirizzarlo anche da altre parti basta che sia GET e non post.
         return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
 
@@ -57,25 +61,35 @@ class ComicController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * 1/edit -> id dell'elemento e aggiungi edit nel url
+     * dependency injection per non usare findOrFail
      */
-    public function edit(string $id)
+    public function edit(Comic $comic)
     {
         //
+        //dd($comic);
+        return view('comics.edit', compact('comic'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update( Request $request, Comic $comic)
     {
         //
+        $data = $request->all();
+        $comic->update($data); //per fare questa operazione serve sempre il $fillable nel model
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
 
     /**
      * Remove the specified resource from storage.
+     * * dependency injection per non usare findOrFail
      */
-    public function destroy(string $id)
+    public function destroy( Comic $comic)
     {
-        //
+        //dd($comic);
+        $comic->delete();
+        return redirect()->route('comics.index');
     }
 }
