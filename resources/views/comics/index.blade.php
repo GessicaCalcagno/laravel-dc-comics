@@ -29,15 +29,19 @@
                         <td>{{ $comic->series }}</td>
                         <td>{{ $comic->sale_date }}</td>
                         <td>{{ $comic->type }}</td>
-                        <td >
+                        <td>
                             <div class="d-flex">
-                                <a class="btn btn-success me-1" href="{{ route('comics.show', ['comic' => $comic->id]) }}">Info</a>
-                                <a class="btn btn-warning me-1" href= "{{ route('comics.edit', ['comic' => $comic->id]) }}">Modifica</a>
-    
-                                <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST">
-                                  @csrf
-                                  @method('DELETE')
-                                  <button class="btn btn-danger me-1 delete-button" onclick="return confirm('Sei sicuro di voler cancellare questo fumetto?')">Cancella</button>
+                                <a class="btn btn-success me-1"
+                                    href="{{ route('comics.show', ['comic' => $comic->id]) }}">Info</a>
+                                <a class="btn btn-warning me-1"
+                                    href= "{{ route('comics.edit', ['comic' => $comic->id]) }}">Modifica</a>
+
+                                <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST"
+                                    class="delete-form">
+                                    @csrf
+                                    @method('DELETE')
+                                    {{-- <button class="btn btn-danger me-1 " onclick="return confirm('Sei sicuro di voler cancellare questo fumetto?')">Cancella</button> --}}
+                                    <button type="submit" data-comic-title="{{ $comic->title }}" class="btn btn-danger me-1">Cancella</button>
                                 </form>
                             </div>
                         </td>
@@ -47,6 +51,8 @@
         </table>
     </div>
 
-    {{-- <!-- Includo lo script app.js se implementi con Java Script -->
-    <script src="{{ asset('js/app.js') }}"></script> --}}
+
+    {{-- MODAL --}}
+    @include('partials.delete-comic-modal');
+
 @endsection
